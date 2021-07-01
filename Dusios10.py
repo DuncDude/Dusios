@@ -24,11 +24,16 @@ try:
 
 except:
 	print("you seem to be missing some libraries")
+
+	
 #GLOBAL VARIBLES
 BSSID = " "
 
+
+
+
 #Check Profile Settings
-interface = 'wlp6s0'
+interface = 'wlp5s0'
 INTERFACE= ''
 CLIENT= " "
 CHANNEL= 0
@@ -1093,6 +1098,9 @@ def Lib():
 			os.system("(cd hcxdumptool && sudo make && sudo make install)")
 			os.system("sudo git clone https://github.com/ZerBea/hcxtools")
 			os.system("(cd hcxtools && sudo make && sudo make install)")
+			os.system("git clone https://github.com/warecrer/Hcxpcaptool")
+			os.system("(cd Hcxpcaptool && sudo make && sudo make install)")
+			
 					  
 			#installl python packages
 			os.system("sudo pip install requests")
@@ -1125,6 +1133,16 @@ def Lib():
 	
 
 def Home():
+	#check the profile page
+	global interface
+	#read the Profile File
+# Using readlines()
+	profile = open('profile.txt', 'r')
+	ProfileText = profile.readlines()
+	interface = ProfileText[1]
+	
+	
+	
 	#List Options
 	Banner()	
 	print("Top Menu")
